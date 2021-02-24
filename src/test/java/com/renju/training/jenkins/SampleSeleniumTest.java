@@ -9,6 +9,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+
 public class SampleSeleniumTest {
 	
 	WebDriver driver;
@@ -21,14 +22,21 @@ public class SampleSeleniumTest {
 		driver = new ChromeDriver(chromeOptions);
 	}
 	
+	
+	
 	@Test
 	public void validateGoogleId() throws Exception {
 		System.out.println("Opening Browser");
 		driver.get("http://www.google.com");
 		System.out.println("Clicking Gmail Link");
-		driver.findElement(By.xpath("//*[@id=\"gbw\"]/div/div/div[1]/div[1]/a")).click();
+		driver.findElement(By.xpath("//*[@id='gb']/div/div[1]/div/div[1]/a")).click();
 		System.out.println("Clicking Sign In link");
-		driver.findElement(By.xpath("/html/body/nav/div/a[2]")).click();
+		//Thread.sleep(3000);
+		driver.findElement(By.xpath("/html/body/div[1]/div[1]/div[5]/ul/li[2]/a")).click();
+		//driver.findElement(By.linkText("sign in")).click();
+		
+		
+		Thread.sleep(3000);
 		System.out.println("Entering username");
 		driver.findElement(By.xpath("//*[@id=\"identifierId\"]")).sendKeys("renju.jenkins.training");
 		System.out.println("Clicking Next button");
@@ -38,8 +46,7 @@ public class SampleSeleniumTest {
 		AssertJUnit.assertTrue(textFound);
 	}
 	
-	@AfterClass
-	public void closeBrowser() {
-		driver.quit();
-	}
+	/*
+	 * @AfterClass public void closeBrowser() { driver.quit(); }
+	 */
 }
